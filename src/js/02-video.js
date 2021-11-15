@@ -9,3 +9,4 @@ player.on('timeupdate', data => {
   console.log(data);
 });
 player.setCurrentTime(localStorage.getItem('videoplayer-current-time') || 0);
+console.lof();
