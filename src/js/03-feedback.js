@@ -12,11 +12,17 @@ const dataSet = {};
 const handleTextInput = e => {
   if (e.target.name == refs.email.name) {
     dataSet.email = e.target.value;
-    console.log(refs.email.value);
+    // console.log(e.target.name);
   }
   if (e.target.name == refs.message.name) {
     dataSet.message = e.target.value;
   }
+  //   const { name } = e.target;
+  //   dataSet = {
+  //     ...dataSet,
+  //     [name]: value,
+  //   };
+  //   console.log(dataSet);
 
   const inputJSON = JSON.stringify(dataSet);
 
@@ -35,7 +41,8 @@ populateText();
 function populateText() {
   const savedMessadge = localStorage.getItem(STORAGE_KEY);
   const newdataSet = JSON.parse(savedMessadge);
-
+  console.log(savedMessadge);
+  console.log(newdataSet);
   if (savedMessadge) {
     refs.email.value = newdataSet.email;
     refs.message.value = newdataSet.message;
