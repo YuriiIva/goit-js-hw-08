@@ -1,4 +1,4 @@
-// import throttle from 'lodash.throttle';
+import throttle from 'lodash.throttle';
 
 const STORAGE_KEY = 'feedback-form-state';
 
@@ -34,13 +34,14 @@ populateText();
 
 function populateText() {
   const savedMessadge = localStorage.getItem(STORAGE_KEY);
-  console.log(savedMessadge);
+  const newdataSet = JSON.parse(savedMessadge);
+
   if (savedMessadge) {
-    refs.email.value = 5;
-    refs.message.value = 25;
+    refs.email.value = newdataSet.email;
+    refs.message.value = newdataSet.message;
   }
 }
 
 refs.form.addEventListener('submit', handleFormSubmit);
-// refs.form.addEventListener('input', throttle(handleTextInput, 500));
-refs.form.addEventListener('input', handleTextInput);
+refs.form.addEventListener('input', throttle(handleTextInput, 500));
+// refs.form.addEventListener('input', handleTextInput);
